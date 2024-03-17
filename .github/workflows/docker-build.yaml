@@ -30,8 +30,9 @@ jobs:
         with:
           file: .docker-config/webserver/Dockerfile
           push: true
-          tags: user/app:latest
-
+          tags: |
+            mandrasch/dokku-docker-php-db-demo:latest
+            ghcr.io/mandrasch/dokku-docker-php-db-demo:latest
       # TODO: store as artifact?
 
     # TODO: trigger dokku
