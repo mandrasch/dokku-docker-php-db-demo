@@ -9,7 +9,8 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      
+
+      # TODO: needed?
       # https://github.com/marketplace/actions/build-and-push-docker-images
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -25,11 +26,14 @@ jobs:
           # https://docs.github.com/de/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries
           password: ${{ secrets.GH_TOKEN }}
 
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          tags: user/app:latest
+      - name: Build Docker image
+        run: docker-compose build
+
+      - name: Push Docker image to Docker Hub
+        run: |
+          docker-compose push
+
+      # TODO: store as artifact first?
 
     # TODO: trigger dokku
     # https://github.com/dokku/github-action/blob/master/example-workflows/build-and-deploy.yml
