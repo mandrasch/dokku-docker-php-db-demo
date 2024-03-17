@@ -1,0 +1,31 @@
+services:
+
+    # nginx + php-fpm combined, including build process (composer + npm)
+    webserver:
+        build: 
+            context: .
+            dockerfile: ./.docker-config/webserver/Dockerfile
+        ports:
+            - '6000:80'
+
+    database:
+        image: 'mysql:8.0'
+        volumes:
+            # Not binding on the host system (https://stackoverflow.com/a/55601610)
+            - type: "volume"
+              source: "db-data"
+              target: "/var/lib/mysql"
+        # TODO: How to secure these values?
+        environment:
+            - MYSQL_ROOT_PASSWORD=db
+            - MYSQL_DATABASE=db
+            - MYSQL_USER=db
+            - MYSQL_PASSWORD=db
+        ports:
+            - '6002:3306'
+
+    redis:
+        image: 'redis:alpine'
+
+volumes:
+  db-data:

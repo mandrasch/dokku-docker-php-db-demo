@@ -1,3 +1,5 @@
 /vendor/
 /node_modules/
 *.env
+/db-data/
+/public/dist/

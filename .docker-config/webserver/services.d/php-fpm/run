@@ -1,0 +1,25 @@
+#!/usr/bin/with-contenv sh
+# (https://stackoverflow.com/a/57344427)
+
+# TODO: re-enable this check?
+# Enable opcache for production
+# if [ "$APP_ENV" == "production" ]; then
+#   mv /usr/local/etc/php/opcache_disabled.ini /usr/local/etc/php/opcache.ini
+#   echo "Enabling PHP-FPM's opcache for production";
+# else
+#   echo "PHP-FPM's opcache is NOT enabled";
+# fi
+
+# Enable opcache 
+mv /usr/local/etc/php/opcache_disabled.ini /usr/local/etc/php/opcache.ini
+echo "Enabling PHP-FPM's opcache for production";
+
+su www-data
+
+# This will start to listen on 127.0.0.1:9000
+# config is here: 
+# /usr/local/etc/php-fpm.conf
+# /usr/local/etc/php-fpm.d/www.conf
+
+# start non-daemonized because of supervisor?
+exec /usr/local/sbin/php-fpm --nodaemonize

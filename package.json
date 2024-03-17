@@ -4,6 +4,9 @@
   "description": "Simple PHP + MySQL Example of Docker Image Deployment with Dokku",
   "main": "index.js",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "serve": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
