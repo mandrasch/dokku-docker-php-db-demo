@@ -121,5 +121,6 @@ RUN rm -rf /var/cache/apk/* && rm -rf /tmp/*
 EXPOSE 80
 
 # starts s6-overlay supervisor (https://github.com/just-containers/s6-overlay)
-ENTRYPOINT ["/init"]
+# fix "s6-overlay-suexec: fatal: can only run as pid 1 "
+ENTRYPOINT ["exec", "/init"]
 CMD []
