@@ -5,6 +5,7 @@ FROM composer:2 as COMPOSER
 # Fork of https://github.com/bkuhl/fpm-nginx
 # TODO: use ARG to set php and nodejs version
 # TODO: Bundle this into separate base image?
+# TODO: Or use serversideup/php:8.2-fpm-nginx?
 FROM php:8.2-fpm-alpine3.18 as base
 
 # Install composer the easy way (see above)
