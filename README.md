@@ -75,8 +75,11 @@ dokku apps:create dokku-docker-php-db-demo
 # https://dokku.com/docs/deployment/methods/image#initializing-an-app-repository-from-a-docker-image
 dokku git:from-image dokku-docker-php-db-demo ghcr.io/mandrasch/dokku-docker-php-db-demo:latest
 
-
-
+# After successful deployments, latest won't repull?
+# (If the image tag doesn't change, that won't trigger a rebuild (as documented),
+# see: https://github.com/dokku/dokku/issues/6302 - # or use :<sha> for pull?
+docker pull ghcr.io/mandrasch/dokku-docker-php-db-demo
+dokku ps:rebuild dokku-docker-php-db-demo
 ```
 
 ## Why?
