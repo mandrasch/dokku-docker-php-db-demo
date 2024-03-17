@@ -16,8 +16,6 @@ It is currently not possible to deploy a docker compose build with different ser
 | Container     | Size          |
 | ------------- | ------------- |
 | webserver     |               |
-| database      |               |
-
 
 This is not intended for local development, for local development i use DDEV.
 
