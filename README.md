@@ -1,18 +1,23 @@
 # dokku-docker-php-db-demo
 
-Simple PHP + MySQL + Vite example of Docker Image Deployment with Dokku, it's my first try. Tried to keep it simple and lightweight.
+Simple PHP example of Docker Image Deployment with Dokku, it's my first try. Tried to keep it simple and lightweight.
+
+⚠️ Beware: This is a demo project, please use with caution and double-check security. ⚠️ 
 
 Fork of https://github.com/bkuhl/fpm-nginx.
 
 The Docker Image is built via GitHub Action and pushed to GitHubs package registry. The Dokku instance pulls the image from there (after being informed by a GitHub Action trigger).
 
+<hr>
+It is currently not possible to deploy a docker compose build with different services, but you can build your webserver as image and deploy it to Dokku (https://github.com/dokku/dokku/issues/5102). See https://dokkupose.netlify.app/ as well.
+<hr>
+
 
 | Container     | Size          |
 | ------------- | ------------- |
-| webserver     |     |
-| database      |   |
+| webserver     |               |
+| database      |               |
 
-⚠️ Beware: This is a demo project, please use with caution and double-check security. ⚠️ 
 
 This is not intended for local development, for local development i use DDEV.
 
