@@ -121,6 +121,14 @@ RUN rm -rf /var/cache/apk/* && rm -rf /tmp/*
 EXPOSE 80
 
 # starts s6-overlay supervisor (https://github.com/just-containers/s6-overlay)
-# fix "s6-overlay-suexec: fatal: can only run as pid 1 "
-ENTRYPOINT ["exec", "/init"]
+
+# workaround needed for "s6-overlay-suexec: fatal: can only run as pid 1"
+# ENTRYPOINT ["/init"]
+
+# workaround, thx to https://community.fly.io/t/is-it-possible-to-use-my-own-init/12082/4
+COPY .docker-config/webserver/s6-init-wrapper ./
+RUN chmod +x s6-init-wrapper
+RUN ls -lsa
+ENTRYPOINT ["./s6-init-wrapper"]
+
 CMD []

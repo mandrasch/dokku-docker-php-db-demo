@@ -47,6 +47,8 @@ The generated image will be in a special folder like `/Users/max/OrbStack/docker
 - [ ] What is the best way to combine DDEV for local development and docker compose for deployment?
 - [ ] Switch to serversideup/php:8.2-fpm-nginx ? 
 - [ ] Try with Craft CMS and add worker
+- [ ] Dokku - learn about release tasks 
+- [ ] For more efficient zero downtime deployments, add healthchecks to your app.json. See https://dokku.com/docs/deployment/zero-downtime-deploys/ for examples
 
 ## How was this created?
 
@@ -63,6 +65,18 @@ ddev npm i vite
 # Added scripts in package.json
 
 # Added docker-compose.yml and Dockerfiles
+```
+
+Login to Dokku server:
+
+```bash
+dokku apps:create dokku-docker-php-db-demo
+
+# https://dokku.com/docs/deployment/methods/image#initializing-an-app-repository-from-a-docker-image
+dokku git:from-image dokku-docker-php-db-demo ghcr.io/mandrasch/dokku-docker-php-db-demo:latest
+
+
+
 ```
 
 ## Why?
@@ -83,5 +97,6 @@ Thanks to
 
 - https://phpdocker.io/
 - https://github.com/nystudio107/spin-up-craft
--[How I deploy serverless containers for free - Beyond Fireship](https://www.youtube.com/watch?v=cw34KMPSt4k)
+- [How I deploy serverless containers for free - Beyond Fireship](https://www.youtube.com/watch?v=cw34KMPSt4k)
 - https://github.com/bkuhl/fpm-nginx
+- https://www.tonysm.com/multiprocess-containers-with-s6-overlay/
